@@ -40,11 +40,13 @@ if title_page:
 
 
 # Extract all h1 elements
-titles = [title.string for title in soup.find_all('h1')]
+titles = [title.text for title in soup.find_all('h1')]
 
 if not titles: 
     print("Titles not found")
 elif len(titles) > 1: 
     print("more than 1 title")
+    for title in titles:
+        print(title)
 else:
     print("only 1 title found")
