@@ -4,7 +4,12 @@ import requests
 
 url = "https://www.apple.com/es/shop/buy-mac/macbook-pro"
 
-response = requests.get(url)
+# we can use custom headers
+headers = {
+    'User-Agent': 'Mozilla/5.0 ...'
+}
+
+response = requests.get(url, headers=headers)
 
 if response.status_code == 200:
     print("success !")
