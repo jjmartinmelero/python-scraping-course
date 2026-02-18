@@ -17,4 +17,12 @@ with sync_playwright() as p:
 
     print(f"The first image src of the course page is: {image_src}")
 
-    browser.close()
+
+    # use xpaths
+    # xpath is more specific and less prone to change
+    first_image = page.locator('xpath=/html/body/div[1]/div/div[1]/img')
+    print(first_image.get_attribute('src'))
+
+
+
+    browser.close() 
