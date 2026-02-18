@@ -5,12 +5,16 @@ url = 'https://midu.dev'
 with sync_playwright() as p:
     browser = p.chromium.launch()
     page = browser.new_page()
-    first_article_anchor = page.locator('article a').first
-    first_article_anchor.click()
+    page.goto(url)
+
+    first_course_link = page.locator('a[href*="/curso/"]').first
+    first_course_link.click()
 
     page.wait_for_load_state()
 
-    first_image = page.locator('main img').first
+    first_image = page.locator('img').first
     image_src = first_image.get_attribute('src')
 
-    print(f"The first src image article is: {image_src}")
+    print(f"The first image src of the course page is: {image_src}")
+
+    browser.close()
